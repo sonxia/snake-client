@@ -12,9 +12,9 @@ const connect = function () {
   conn.on('connect', () => {
     console.log("connected to server!!!");
     conn.write("Name: SSM");
-    setInterval(func = () => {
-      conn.write("Move: up");
-    }, 500);
+    // setInterval(func = () => {
+    //   conn.write("Move: up");
+    // }, 500);
   })
 
   return conn;
