@@ -1,20 +1,11 @@
 const {connect} = require("./client.js")
+const { connect } = require("./client");
+const { setupInput } = require("./input");
 
 client.setEncoding("utf8"); // interpret data as text
 client.on("data", (data) => {
   console.log("Message from client: ", data);
 }); 
-
-// setup interface to handle user input from stdin
-
-const setupInput = function () {
-  const stdin = process.stdin;
-  stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
-  stdin.resume();
-  stdin.on("data", handleUserInput);
-  return stdin;
-};
 
 const handleUserInput = function () {
   const stdout = process.stdout;
@@ -23,5 +14,8 @@ const handleUserInput = function () {
     process.exit();
   }
 };
+
+console.log("Connecting ...");
+connect();
 
 setupInput();
